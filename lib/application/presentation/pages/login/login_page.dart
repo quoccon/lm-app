@@ -7,7 +7,11 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold<LoginCubit>(title: const Text(""), body: LoginBody());
+    return AppScaffold<LoginCubit>(
+      isShowHeaderLine: false,
+      title: const Text(""),
+      body: LoginBody(),
+    );
   }
 }
 
@@ -16,6 +20,10 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("data");
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+      ),
+    );
   }
 }
