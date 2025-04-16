@@ -4,16 +4,12 @@ import 'package:flutter_cors/flutter_core.dart';
 import 'application/cubit/cubit.dart';
 import 'configs/app_config.dart';
 import 'constants/constants.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 final globalNavigatorKey = GlobalKey<NavigatorState>();
 
-// Alice alice = Alice(
-//   navigatorKey: globalNavigatorKey,
-//   showInspectorOnShake: true,
-//   showNotification: false,
-// );
-
 Future<void> buidApp(Env env) async {
+  print('rnv: $env');
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await AppConfig().configApp(env: env);
@@ -26,9 +22,7 @@ Future<void> buidApp(Env env) async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({
-    super.key,
-  });
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +30,11 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // navigatorKey: alice.getNavigatorKey(),
-      // localizationsDelegates: const [
-      //   GlobalMaterialLocalizations.delegate,
-      //   GlobalWidgetsLocalizations.delegate,
-      //   GlobalCupertinoLocalizations.delegate, // Add this line
-      // ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate, // Add this line
+      ],
       supportedLocales: const [Locale('vi', 'VN')],
       locale: const Locale('vi', 'VN'),
       navigatorKey: globalNavigatorKey,

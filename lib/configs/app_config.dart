@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cors/flutter_core.dart';
 import '../dependences/dependencies.dart' as di;
+import 'dart:developer' as dev;
 
 import '../constants/constants.dart';
 import 'configs.dart';
@@ -15,11 +16,16 @@ class AppConfig {
   AppConfig._internal();
 
   Future<void> configApp({required Env env}) async {
-    try{
+    try {
+      dev.log('Starting AppConfig for env: ${env.value}');
       await _configEnv(env: env);
       await _configDi();
       _configUI();
-    }catch(_){}
+      dev.log('AppConfig completed');
+    } catch (e, stackTrace) {
+      dev.log('AppConfig failed: $e', error: e, stackTrace: stackTrace);
+      rethrow;
+    }
   }
 
   void _configUI() {
