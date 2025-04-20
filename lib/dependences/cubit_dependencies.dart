@@ -7,7 +7,7 @@ import '../application/cubit/cubit.dart';
 Future<void> config(GetIt injector) async {
   try {
     injector.registerSingleton<AuthCubit>(AuthCubit());
-    injector.registerSingleton<LoginCubit>(LoginCubit());
+    injector.registerSingleton<LoginCubit>(LoginCubit(injector(),injector()));
     injector.registerSingleton<MainTabCubit>(MainTabCubit());
   } catch (e) {
     dev.log('DI initialization failed: $e', error: e);

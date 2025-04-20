@@ -7,6 +7,7 @@ import 'package:lifemap/application/presentation/pages/home/home_page.dart';
 import 'package:lifemap/application/presentation/pages/noti/noti_page.dart';
 
 import '../application/presentation/pages/login/login_page.dart';
+import '../application/presentation/pages/main_tab/main_tab.dart';
 import '../constants/constants.dart';
 
 Future<void> config(GetIt injector) async {
@@ -14,6 +15,10 @@ Future<void> config(GetIt injector) async {
     injector.registerFactory<Widget>(
           () => const LoginPage(),
       instanceName: AppRoute.login,
+    );
+    injector.registerFactory<Widget>(
+          () => const MainTabs(),
+      instanceName: AppRoute.mainTab,
     );
     injector.registerFactory<Widget>(
           () => const HomePage(),

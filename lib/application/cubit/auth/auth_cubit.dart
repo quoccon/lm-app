@@ -35,10 +35,14 @@ class AuthCubit extends BaseCubit<AuthState> {
     });
   }
 
-  Future setUserInfo({TokenModel? token, UserModel? user}) async {
+  Future setUserInfo({
+    TokenModel? token,
+    UserModel? user,
+    bool isSaveUserToken = false,
+  }) async {
     final tokenStr = "${token?.type} ${token?.token}";
-    await _saveTokenToCached(tokenStr);
-    await _saveUserInfoToCached(user);
+    await _saveTokenToCached(isSaveUserToken ?tokenStr : "");
+    await _saveUserInfoToCached(isSaveUserToken ? user : null);
     emit(state.copyWith(token: tokenStr, user: user));
   }
 
