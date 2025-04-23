@@ -46,10 +46,13 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
 };
 
 SportPreferences _$SportPreferencesFromJson(Map<String, dynamic> json) =>
-    SportPreferences(suggestName: json['suggets_name'] as String?);
+    SportPreferences(
+      suggestName: json['suggets_name'] as String?,
+      id: json['_id'] as String?,
+    );
 
 Map<String, dynamic> _$SportPreferencesToJson(SportPreferences instance) =>
-    <String, dynamic>{'suggets_name': instance.suggestName};
+    <String, dynamic>{'_id': instance.id, 'suggets_name': instance.suggestName};
 
 TokenModel _$TokenModelFromJson(Map<String, dynamic> json) =>
     TokenModel(type: json['type'] as String?, token: json['token'] as String?);

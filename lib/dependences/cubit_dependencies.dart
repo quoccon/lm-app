@@ -9,6 +9,10 @@ Future<void> config(GetIt injector) async {
     injector.registerSingleton<AuthCubit>(AuthCubit());
     injector.registerSingleton<LoginCubit>(LoginCubit(injector(),injector()));
     injector.registerSingleton<MainTabCubit>(MainTabCubit());
+    injector.registerFactory<HomeCubit>(() => HomeCubit());
+    injector.registerFactory<ChatCubit>(() => ChatCubit());
+    injector.registerFactory<NotiCubit>(() => NotiCubit());
+    injector.registerFactory<AccountCubit>(() => AccountCubit());
   } catch (e) {
     dev.log('DI initialization failed: $e', error: e);
   }
