@@ -84,13 +84,15 @@ class UserModel extends Equatable {
 
 @JsonSerializable()
 class SportPreferences extends Equatable {
+  @JsonKey(name: '_id')
+  final String? id;
   @JsonKey(name: 'suggets_name')
   final String? suggestName;
 
-  const SportPreferences({this.suggestName});
+  const SportPreferences({this.suggestName, this.id});
 
-  SportPreferences copyWith({String? suggestName}) {
-    return SportPreferences(suggestName: suggestName ?? this.suggestName);
+  SportPreferences copyWith({String? id,String? suggestName}) {
+    return SportPreferences(id: id ?? this.id,suggestName: suggestName ?? this.suggestName);
   }
 
   factory SportPreferences.fromJson(Map<String, dynamic> json) =>
@@ -99,7 +101,7 @@ class SportPreferences extends Equatable {
   Map<String, dynamic> toJson() => _$SportPreferencesToJson(this);
 
   @override
-  List<Object?> get props => [suggestName];
+  List<Object?> get props => [id,suggestName];
 }
 
 @JsonSerializable()

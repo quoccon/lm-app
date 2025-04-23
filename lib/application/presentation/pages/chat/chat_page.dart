@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cors/flutter_core.dart';
 
+import '../../../cubit/chat/chat_cubit.dart';
+
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(body: ChatBody(), title: Text(""));
+    return AppScaffold<ChatCubit>(body: ChatBody(), title: Text(""));
   }
 }
 

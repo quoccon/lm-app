@@ -2,17 +2,17 @@ part of 'main_tab_cubit.dart';
 
 class MainTabState extends BaseState {
   final itemTab = [
-    TabBarItem(-1, icon: '', title: 'Trang chủ'),
-    TabBarItem(0, icon: '', title: 'Tin nhắn'),
-    TabBarItem(1, icon: '', title: 'Thông báo'),
-    TabBarItem(2, icon: '', title: 'Tài khoản'),
+    TabBarItem(0, icon: 'ic_home.svg', title: 'Trang chủ'),
+    TabBarItem(1, icon: 'ic_chat.svg', title: 'Tin nhắn'),
+    TabBarItem(2, icon: 'ic_noti.svg', title: 'Thông báo'),
+    TabBarItem(3, icon: 'ic_account.svg', title: 'Tài khoản'),
   ];
 
   final int selectItem;
 
-  MainTabState({this.selectItem = -1});
+  MainTabState({this.selectItem = 0});
 
-  MainTabState copyWith({int? selectItem, int? nextIndex}) {
+  MainTabState copyWith({int? selectItem}) {
     return MainTabState(selectItem: selectItem ?? this.selectItem);
   }
 

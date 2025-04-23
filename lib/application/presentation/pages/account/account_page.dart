@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cors/flutter_core.dart';
+import 'package:lifemap/application/cubit/cubit.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(body: AccountBody(),title: const Text(""),);
+    return AppScaffold<AccountCubit>(body: AccountBody(),title: const Text(""),);
   }
 }
 
