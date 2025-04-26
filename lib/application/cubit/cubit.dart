@@ -5,3 +5,4 @@ export 'home/home_cubit.dart';
 export 'chat/chat_cubit.dart';
 export 'noti/noti_cubit.dart';
 export 'account/account_cubit.dart';
+export 'register/register_cubit.dart';

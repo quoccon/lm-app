@@ -39,7 +39,7 @@ class LoginBody extends StatelessWidget {
         Expanded(child: _buildInput(cubit: cubit)),
         _buildButtonLogin(cubit),
         AppSpaces.space8.vertical,
-        _buildActionButton()
+        _buildActionButton(context),
       ],
     );
   }
@@ -84,7 +84,7 @@ class LoginBody extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButton(){
+  Widget _buildActionButton(BuildContext context){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -116,22 +116,22 @@ class LoginBody extends StatelessWidget {
           ],
         ),
         AppSpaces.space8.vertical,
-        _registerNow()
+        _registerNow(context),
       ],
     );
   }
 
-  Widget _registerNow(){
+  Widget _registerNow(BuildContext context){
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('Bạn chưa có tài khoản?',style: AppTextStyle.regular,textAlign: TextAlign.center,),
           AppSpaces.space4.horizontal,
           InkWell(
             onTap: () {
-
+              Navigator.pushNamed(context, AppRoute.register);
             },
             child: Text("Đăng ký",style: AppTextStyle.regular.semibold.copyWith(color: TextColor.colorText),),
           )

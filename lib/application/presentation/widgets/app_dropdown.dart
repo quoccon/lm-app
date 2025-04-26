@@ -2,53 +2,61 @@ import 'package:flutter/material.dart';
 
 import '../../../../constants/constants.dart';
 
-class AppDropDown extends StatelessWidget {
+class AppDropDown<T> extends StatelessWidget {
   const AppDropDown({
     super.key,
-    this.onTap,
+    required this.items,
+    required this.onChanged,
+    this.value,
     this.hint,
-    this.text,
     this.isEnable = true,
   });
 
-  final VoidCallback? onTap;
-  final String? text;
+  final List<T> items;
+  final ValueChanged<T?> onChanged;
+  final T? value;
   final String? hint;
   final bool isEnable;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      splashColor: Colors.transparent,
-      onTap: isEnable ? onTap : null,
-      child: Container( 
+    return IgnorePointer(
+      ignoring: !isEnable,
+      child: Container(
         decoration: BoxDecoration(
           borderRadius: AppRadius.radius8,
           border: Border.all(color: BorderColor.solid),
           color: Colors.white,
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10.0),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                text ?? hint ?? '',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: AppTextStyle.regular.copyWith(
-                  color: text == null || !isEnable
-                      ? TextColor.tertiary
-                      : TextColor.primary,
-                ),
-              ),
-            ),
-            AppIcon.size24(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<T>(
+            value: value,
+            isExpanded: true,
+            icon: AppIcon.size24(
               'ic_narrow_down.svg',
               color: IconColor.primary,
-            )
-          ],
+            ),
+            hint: Text(
+              hint ?? '',
+              style: AppTextStyle.regular.copyWith(color: TextColor.tertiary),
+            ),
+            onChanged: onChanged,
+            items: items.map((item) {
+              return DropdownMenuItem<T>(
+                value: item,
+                child: Text(
+                  item is GenderEnum ? item.genderString : item.toString(),
+                  style: AppTextStyle.regular.copyWith(
+                    color: TextColor.primary,
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
         ),
       ),
     );
   }
 }
+
