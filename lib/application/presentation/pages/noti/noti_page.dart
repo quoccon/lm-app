@@ -8,7 +8,7 @@ class NotiPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold<NotiCubit>(body: NotiBody(),title: const Text(""),);
+    return AppScaffold<NotiCubit>(body: NotiBody(),title: const Text("Thông báo"),);
   }
 }
 

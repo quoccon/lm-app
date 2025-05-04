@@ -4,7 +4,7 @@ class MainTabState extends BaseState {
   final itemTab = [
     TabBarItem(0, icon: 'ic_home.svg', title: 'Trang chủ'),
     TabBarItem(1, icon: 'ic_chat.svg', title: 'Tin nhắn'),
-    TabBarItem(2, icon: 'ic_noti.svg', title: 'Thông báo'),
+    TabBarItem(2, icon: 'ic_notification.svg', title: 'Thông báo'),
     TabBarItem(3, icon: 'ic_account.svg', title: 'Tài khoản'),
   ];
 

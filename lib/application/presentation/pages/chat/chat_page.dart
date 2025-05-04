@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cors/flutter_core.dart';
+import 'package:lifemap/application/presentation/widgets/app_textfield.dart';
 
 import '../../../cubit/chat/chat_cubit.dart';
 
@@ -8,7 +9,11 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold<ChatCubit>(body: ChatBody(), title: Text(""));
+    return AppScaffold<ChatCubit>(
+      body: ChatBody(),
+      title: Text("Tin nhắn"),
+      actions: [],
+    );
   }
 }
 
@@ -22,6 +27,16 @@ class ChatBody extends StatefulWidget {
 class _ChatBodyState extends State<ChatBody> {
   @override
   Widget build(BuildContext context) {
-    return Text("chat");
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            AppTextField(hintText: 'Tìm kiếm...', onChanged: (p0) {}),
+          ],
+        ),
+      ),
+    );
   }
 }

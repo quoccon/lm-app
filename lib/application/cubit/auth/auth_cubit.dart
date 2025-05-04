@@ -42,6 +42,7 @@ class AuthCubit extends BaseCubit<AuthState> {
   }) async {
     final tokenStr = "${token?.type} ${token?.token}";
     await _saveTokenToCached(isSaveUserToken ?tokenStr : "");
+    print('saveToken: ${state.isLogined}');
     await _saveUserInfoToCached(isSaveUserToken ? user : null);
     emit(state.copyWith(token: tokenStr, user: user));
   }
@@ -58,6 +59,7 @@ class AuthCubit extends BaseCubit<AuthState> {
   Future<String?> _getTokenFromCached() async {
     final tempToken =
         await SharePrefHelper().getValue(key: tokenKey) as String?;
+    print('tempToken: $tempToken');
     return tempToken;
   }
 

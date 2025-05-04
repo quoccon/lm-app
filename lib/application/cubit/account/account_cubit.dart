@@ -6,4 +6,8 @@ part 'account_state.dart';
 
 class AccountCubit extends BaseCubit<AccountState> {
   AccountCubit() : super(AccountState());
+
+  void toggleNoti(bool isPopUpNoti){
+    emit(state.copyWith(isPopUpNoti: isPopUpNoti));
+  }
 }

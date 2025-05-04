@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_cors/flutter_core.dart';
 
 import '../../../constants/constants.dart';
+import '../model/sport_preferences_model.dart';
 import '../model/user_model.dart';
 
 abstract class AuthRemote {
@@ -17,6 +18,13 @@ abstract class AuthRemote {
     required String gender,
     required String password,
   });
+
+  Future<Either<Failure, dynamic>> verifyOtp({
+    required String email,
+    required int otp,
+  });
+
+  Future<Either<Failure, List<SportPreferences>?>> listSuggestion();
 }
 
 class AuthRemoteImpl implements AuthRemote {
@@ -72,5 +80,36 @@ class AuthRemoteImpl implements AuthRemote {
     );
 
     return result;
+  }
+
+  @override
+  Future<Either<Failure, dynamic>> verifyOtp({
+    required String email,
+    required int otp,
+  }) async {
+    final data = <String, dynamic>{'email': email, 'otp': otp};
+    final result = await _appClient.call(
+      ApiPath.verifyOtp,
+      method: RestfulMethod.post,
+      data: data,
+    );
+    return result;
+  }
+
+  @override
+  Future<Either<Failure, List<SportPreferences>?>> listSuggestion() async {
+    final result = await _appClient.call(
+      ApiPath.listSuggest,
+      method: RestfulMethod.get,
+    );
+    return result.fold(
+      (error) {
+        return Left(error);
+      },
+      (success) {
+        print('success1: $success');
+        return Right(SportPreferencesResponse.fromJson(success).response);
+      },
+    );
   }
 }

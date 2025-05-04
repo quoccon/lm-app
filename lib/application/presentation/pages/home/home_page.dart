@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cors/flutter_core.dart';
 import 'package:lifemap/application/cubit/cubit.dart';
+import 'package:lifemap/constants/app_colors.dart';
+import 'package:lifemap/constants/app_spaces.dart';
+import 'package:lifemap/constants/app_textstyles.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold<HomeCubit>(title: const Text(""),body: HomeBody());
+    final authCubit = GetIt.I.get<AuthCubit>();
+    return AppScaffold<HomeCubit>(
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Chào mừng trở lại",
+            style: AppTextStyle.eSmall.copyWith(color: TextColor.gray),
+          ),
+          AppSpaces.space4.vertical,
+          Text(authCubit.state.user?.username ?? '', style: AppTextStyle.heading.semibold),
+        ],
+      ),
+      isShowHeaderLine: false,
+      body: HomeBody(),
+    );
   }
 }
 

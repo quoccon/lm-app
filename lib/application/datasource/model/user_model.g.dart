@@ -27,11 +27,9 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
   gender: json['gender'] as String?,
   isVerifyToken: json['isVerifyToken'] as bool?,
   sportPreferences:
-      json['sport_preferences'] == null
-          ? null
-          : SportPreferences.fromJson(
-            json['sport_preferences'] as Map<String, dynamic>,
-          ),
+      (json['sport_preferences'] as List<dynamic>?)
+          ?.map((e) => SportPreferences.fromJson(e as Map<String, dynamic>))
+          .toList(),
   createAtText: json['created_at_text'] as String?,
 );
 
@@ -44,15 +42,6 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
   'sport_preferences': instance.sportPreferences,
   'created_at_text': instance.createAtText,
 };
-
-SportPreferences _$SportPreferencesFromJson(Map<String, dynamic> json) =>
-    SportPreferences(
-      suggestName: json['suggets_name'] as String?,
-      id: json['_id'] as String?,
-    );
-
-Map<String, dynamic> _$SportPreferencesToJson(SportPreferences instance) =>
-    <String, dynamic>{'_id': instance.id, 'suggets_name': instance.suggestName};
 
 TokenModel _$TokenModelFromJson(Map<String, dynamic> json) =>
     TokenModel(type: json['type'] as String?, token: json['token'] as String?);

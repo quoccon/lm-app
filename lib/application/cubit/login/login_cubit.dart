@@ -18,7 +18,7 @@ class LoginCubit extends BaseCubit<LoginState> {
     emit(state.copyWith(password: password));
   }
 
-  void changeRemember(bool? isRemember) {
+  void changeRemember(bool isRemember) {
     emit(state.copyWith(isRemember: isRemember));
   }
 
@@ -36,19 +36,16 @@ class LoginCubit extends BaseCubit<LoginState> {
     );
 
     result.fold(
-          (error) {
+      (error) {
         emit(state.copyWith(error: error.message, isLoading: false));
       },
-          (success) {
+      (success) {
         _authCubit.setUserInfo(
-            token: success?.token,
-            user: success?.user,
-            isSaveUserToken: state.isRemember ?? false,
+          token: success?.token,
+          user: success?.user,
+          isSaveUserToken: state.isRemember ?? false,
         );
-        emit(state.copyWith(
-          isLoading: false,
-          isSuccess: true,
-        ));
+        emit(state.copyWith(isLoading: false, isSuccess: true));
       },
     );
   }

@@ -11,6 +11,7 @@ class AppTabbar extends StatelessWidget {
     required this.tabs,
     this.padding,
   });
+
   final bool isTab;
   final TabController? controller;
   final double? dividerHeight;
@@ -20,21 +21,21 @@ class AppTabbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBar(
-        tabAlignment: TabAlignment.start,
-        controller: controller,
-        isScrollable: true,
-        dividerHeight: dividerHeight,
-        indicatorSize: isTab ? TabBarIndicatorSize.tab : null,
-        indicator: isTab
-            ? BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: BorderColor.solid,
-              )
-            : null,
-        padding: padding,
-        tabs: tabs,
-        labelPadding: isTab
-            ? const EdgeInsets.symmetric(horizontal: 12.0)
-            : const EdgeInsets.only(right: 24.0));
+      tabAlignment: TabAlignment.fill,
+      controller: controller,
+      isScrollable: false,
+      dividerHeight: dividerHeight,
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicator: isTab
+          ? BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: BorderColor.solid,
+      )
+          : null,
+      padding: padding,
+      tabs: tabs,
+      labelPadding: const EdgeInsets.symmetric(horizontal: 0.0),
+      labelStyle: const TextStyle(fontSize: 16),
+    );
   }
 }

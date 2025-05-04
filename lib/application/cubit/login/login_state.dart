@@ -3,12 +3,12 @@ part of 'login_cubit.dart';
 class LoginState extends BaseState {
   final String? email;
   final String? password;
-  final bool? isRemember;
+  final bool isRemember;
 
   const LoginState({
     this.email,
     this.password,
-    this.isRemember,
+    this.isRemember = false,
     super.error,
     super.isLoading,
     super.isSuccess,
@@ -30,6 +30,10 @@ class LoginState extends BaseState {
       isSuccess: isSuccess,
       error: error,
     );
+  }
+
+  bool get inValid {
+    return email.isNotEmptyOrNull && password.isNotEmptyOrNull;
   }
 
   @override

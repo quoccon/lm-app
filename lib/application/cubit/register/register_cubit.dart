@@ -49,4 +49,8 @@ class RegisterCubit extends BaseCubit<RegisterState> {
       },
     );
   }
+
+  Future verifyOtp() async {
+
+  }
 }
