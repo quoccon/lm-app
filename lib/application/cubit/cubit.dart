@@ -1,2 +1,14 @@
 export 'auth/auth_cubit.dart';
 export 'login/login_cubit.dart';
+export 'main_tab/main_tab_cubit.dart';
+export 'home/home_cubit.dart';
+export 'chat/chat_cubit.dart';
+export 'noti/noti_cubit.dart';
+export 'account/account_cubit.dart';
+export 'register/register_cubit.dart';
+export 'challenge/challenge_cubit.dart';
+export 'info_user/info_user_cubit.dart';
+export 'achievements/achievements_cubit.dart';
+export 'verify_otp/verify_otp_cubit.dart';
+export 'suggestion/suggestion_cubit.dart';
+export 'add_challenge/add_challenge_cubit.dart';

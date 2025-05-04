@@ -1,5 +1,6 @@
 import 'package:flutter_cors/flutter_core.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:lifemap/application/datasource/model/sport_preferences_model.dart';
 
 part 'user_model.g.dart';
 
@@ -31,7 +32,7 @@ class UserModel extends Equatable {
   final String? gender;
   final bool? isVerifyToken;
   @JsonKey(name: 'sport_preferences')
-  final SportPreferences? sportPreferences;
+  final List<SportPreferences>? sportPreferences;
   @JsonKey(name: 'created_at_text')
   final String? createAtText;
 
@@ -51,7 +52,7 @@ class UserModel extends Equatable {
     String? avatar,
     String? gender,
     bool? isVerifyToken,
-    SportPreferences? sportPreferences,
+    List<SportPreferences>? sportPreferences,
     String? createAtText,
   }) {
     return UserModel(
@@ -82,25 +83,6 @@ class UserModel extends Equatable {
   ];
 }
 
-@JsonSerializable()
-class SportPreferences extends Equatable {
-  @JsonKey(name: 'suggets_name')
-  final String? suggestName;
-
-  const SportPreferences({this.suggestName});
-
-  SportPreferences copyWith({String? suggestName}) {
-    return SportPreferences(suggestName: suggestName ?? this.suggestName);
-  }
-
-  factory SportPreferences.fromJson(Map<String, dynamic> json) =>
-      _$SportPreferencesFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SportPreferencesToJson(this);
-
-  @override
-  List<Object?> get props => [suggestName];
-}
 
 @JsonSerializable()
 class TokenModel extends Equatable {

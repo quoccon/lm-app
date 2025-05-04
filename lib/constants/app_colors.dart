@@ -11,6 +11,8 @@ class TextColor {
   static const negativeTest = Color(0xFFE11900);
   static const negative = Color(0xFFD93843);
   static const blue = Color(0xFF0B74E5);
+  static const colorText = Color(0xff93A7FD);
+  static const gray = Color(0xff7b6f72);
 }
 
 class IconColor {
@@ -24,6 +26,7 @@ class IconColor {
   static const warning = Color(0xFFFFB700);
   static const negative = Color(0xFFFF424E);
   static const information = Color(0xFF1A94FF);
+  static const iconColor = Color(0xFF96b4fd);
 }
 
 class BorderColor {
@@ -38,6 +41,7 @@ class BorderColor {
 
 class BackgroundColor {
   BackgroundColor._();
+  static const colorButton = Color(0xff93A7FD);
   static const default1 = Color(0xFFFFFFFF);
   static const primary = Color(0xFFF5F5FA);
   static const secondary = Color(0xFFEBEBF0);
